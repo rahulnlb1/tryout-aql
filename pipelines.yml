@@ -1,0 +1,19 @@
+resources:
+  - name: extensions
+    type: FileSpec
+    configuration:
+      sourceArtifactory: art
+      pattern: "pipelines_1612854317/extensions/steps/*/*/*/*.tar.gz"
+      recursive: false
+
+pipelines:
+  - name: sleep_pipeline_extension
+    steps:
+      - name: S_Bash_0023
+        type: Bash
+        configuration:
+           inputResources:
+            - name: extensions
+        execution:
+           onExecute:
+            - ls $res_extensions_resourcePath/extensions/steps/
